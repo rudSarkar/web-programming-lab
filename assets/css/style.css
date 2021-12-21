@@ -39,3 +39,14 @@
 
   
 }
+.f-text{
+  color: white;
+}
+.f-icon{
+  color: white;
+  font-size: 30px;
+  margin-right: 10px;
+}
+.f-link{
+  text-decoration: none;
+}
