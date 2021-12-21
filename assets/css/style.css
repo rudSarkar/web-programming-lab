@@ -1,0 +1,11 @@
+.bg-red {
+  background-color: #eb2c29 !important;
+}
+
+.bg-red a {
+  color: #fff !important;
+}
+
+.bg-red a.nav-link:hover {
+  color: #000 !important;
+}
