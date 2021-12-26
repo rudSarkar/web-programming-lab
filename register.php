@@ -46,16 +46,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="search.html">Search</a>
+                        <a class="nav-link" href="search.php">Search</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.html">Login</a>
+                        <a class="nav-link" href="login.php">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="register.html">Register</a>
+                        <a class="nav-link" href="register.php">Register</a>
                     </li>
                 </ul>
             </div>
@@ -79,7 +79,16 @@
                 <input type="phone" placeholder="phone" autocomplete="nope">
               </div>
               <div class="input-field">
-                <input type="text" placeholder="Blood Group" autocomplete="nope">
+                <select name="" id="">
+                    <option value="A+">A+</option>
+                    <option value="A+">A-</option>
+                    <option value="A+">B+</option>
+                    <option value="A+">B-</option>
+                    <option value="A+">O+</option>
+                    <option value="A+">O-</option>
+                    <option value="A+">AB+</option>
+                    <option value="A+">AB-</option>
+                </select>
               </div>  
             <div class="input-field">
               <input type="password" placeholder="Password" autocomplete="new-password">
