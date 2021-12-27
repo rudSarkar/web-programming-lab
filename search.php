@@ -96,6 +96,71 @@
         </div>
     </div>
 
+    <!-- card_donor_list -->
+    <div class="container">
+        <div class="row">
+                <div class="card-ll col-lg-3 col-md-3 mb-4 mb-md-0">
+                <div class="card w-100">
+                    <div class="card-body">
+                        <div class="card-x">
+                            <div class="card-1"> 
+                                <i class="far fa-user"></i>
+                            </div>
+                            <div class="card-2">
+                                <h5>Name</h5>
+                                <h5>Group</h5>
+                                <h5>District</h5>
+                            </div>  
+                        </div>
+                        
+                    
+                    </div>
+                </div>
+            
+            </div>
+
+            <div class="card-ll col-lg-3 col-md-3 mb-4 mb-md-0">
+                <div class="card w-100">
+                    <div class="card-body">
+                        <div class="card-x">
+                            <div class="card-1"> 
+                                <i class="far fa-user"></i>
+                            </div>
+                            <div class="card-2">
+                                <h5>Name</h5>
+                                <h5>Group</h5>
+                                <h5>District</h5>
+                            </div>  
+                        </div>
+                        
+                    
+                    </div>
+                </div>
+            
+            </div>
+
+            <div class="card-ll col-lg-3 col-md-3 mb-4 mb-md-0">
+                <div class="card w-100">
+                    <div class="card-body">
+                        <div class="card-x">
+                            <div class="card-1"> 
+                                <i class="far fa-user"></i>
+                            </div>
+                            <div class="card-2">
+                                <h5>Name</h5>
+                                <h5>Group</h5>
+                                <h5>District</h5>
+                            </div>  
+                        </div>
+                        
+                    
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
     <!-- Fotter -->
     <footer class="f-back text-center text-lg-start">
         <!-- Grid container -->
