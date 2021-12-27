@@ -36,6 +36,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/main.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-red">
@@ -58,7 +59,7 @@
     </nav>
     <nav class="navbar navbar-expand-lg navbar-light bg-red">
         <div class="container">
-            <a class="navbar-brand" href="#"><b>Blood Donor</b></a>
+            <a class="navbar-brand" href="index.php"><b>Blood Donor</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -87,7 +88,7 @@
     <!---register form-->
 
     <div class="login-form">
-        <form method="POST" action="register.php">
+        <form method="POST" action="register.php" onsubmit="return validateForm()" name="reg_form">
           <h1>Register</h1>
           <div class="content">
             <div class="input-field">

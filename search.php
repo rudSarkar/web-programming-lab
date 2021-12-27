@@ -1,3 +1,9 @@
+<?php
+
+include 'db.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,9 +41,10 @@
             </div>
         </div>
     </nav>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-red">
         <div class="container">
-            <a class="navbar-brand" href="#"><b>Blood Donor</b></a>
+            <a class="navbar-brand" href="index.php"><b>Blood Donor</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -66,98 +73,75 @@
             <div class=" search_t network-heading">
                 <h2>Search Donors</h2>
             </div>
-            <div class="col-lg-3 col-md-3 mb-4 mb-md-0">
-                <h5>Bload Group</h5>
-                <select name="blood_group" id="" class="form-control">
-                    <option value="a+">A+</option>
-                    <option value="a-">A-</option>
-                    <option value="ab+">AB+</option>
-                    <option value="ab-">AB-</option>
-                    <option value="b+">B+</option>
-                    <option value="b-">B-</option>
-                    <option value="o+">O+</option>
-                    <option value="o-">O-</option>
-                </select>
-            </div>
-            <div class="col-lg-3 col-md-3 mb-4 mb-md-0">
-                <h5>District</h5>
-                <select name="dist" id="" class="form-control">
-                    <option value="dhaka">Dhaka</option>
-                </select>
-            </div>
-            <div class="col-lg-3 col-md-3 mb-4 mb-md-0">
-                <h5>Date of Blood Donation</h5>
-                <input type="date" class="form-control">
-            </div>
-            <div class="col-lg-3 col-md-3 mb-4 mb-md-0">
+            <form action="search.php" method="POST">
+                <div class="col-lg-3 col-md-3 mb-4 mb-md-0">
+                    <h5>Bload Group</h5>
+                    <select name="blood_group" id="" class="form-control">
+                        <option value="a+">A+</option>
+                        <option value="a-">A-</option>
+                        <option value="ab+">AB+</option>
+                        <option value="ab-">AB-</option>
+                        <option value="b+">B+</option>
+                        <option value="b-">B-</option>
+                        <option value="o+">O+</option>
+                        <option value="o-">O-</option>
+                    </select>
+                </div>
+                <div class="col-lg-3 col-md-3 mb-4 mb-md-0">
+                    <h5>District</h5>
+                    <select name="dist" id="" class="form-control">
+                        <option value="dhaka">Dhaka</option>
+                        <option value="barishal">Barishal</option>
+                        <option value="rajshahi">Rajshahi</option>
+                    </select>
+                </div>
+                <div class="col-lg-3 col-md-3 mb-4 mb-md-0">
 
-                <button class="btn btn-danger mt-4">Search</button>
-            </div>
+                    <button type="submit" name="search" class="btn btn-danger topez">Search</button>
+                </div>
+            </form>
         </div>
     </div>
 
     <!-- card_donor_list -->
     <div class="container">
-        <div class="row">
-                <div class="card-ll col-lg-3 col-md-3 mb-4 mb-md-0">
-                <div class="card w-100">
-                    <div class="card-body">
-                        <div class="card-x">
-                            <div class="card-1"> 
-                                <i class="far fa-user"></i>
+        <div class="row"> 
+            <!-- return search result -->
+            <?php
+            if(isset($_POST['search'])){
+                $blood_group = $_POST['blood_group'];
+                $dist = $_POST['dist'];
+                $query = "SELECT * FROM users WHERE blood_group = '$blood_group' AND district_name = '$dist'";
+                $result = mysqli_query($connection ,$query);
+                if(mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_assoc($result)){
+            ?>
+                        <div class="card-ll col-lg-3 col-md-3 mb-4 mb-md-0">
+                            <div class="card w-100">
+                                <div class="card-body">
+                                    <div class="card-x">
+                                        <div class="card-1"> 
+                                            <i class="far fa-user"></i>
+                                        </div>
+                                        <div class="card-2">
+                                            Name: <b><?php echo $row['name']; ?></b>
+                                            <br>
+                                            Blood group: <b><?php echo $row['blood_group']; ?></b>
+                                            <br>
+                                            District Name: <b><?php echo $row['district_name']; ?></b>
+                                            <br>
+                                        </div>  
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-2">
-                                <h5>Name</h5>
-                                <h5>Group</h5>
-                                <h5>District</h5>
-                            </div>  
                         </div>
-                        
-                    
-                    </div>
-                </div>
-            
-            </div>
-
-            <div class="card-ll col-lg-3 col-md-3 mb-4 mb-md-0">
-                <div class="card w-100">
-                    <div class="card-body">
-                        <div class="card-x">
-                            <div class="card-1"> 
-                                <i class="far fa-user"></i>
-                            </div>
-                            <div class="card-2">
-                                <h5>Name</h5>
-                                <h5>Group</h5>
-                                <h5>District</h5>
-                            </div>  
-                        </div>
-                        
-                    
-                    </div>
-                </div>
-            
-            </div>
-
-            <div class="card-ll col-lg-3 col-md-3 mb-4 mb-md-0">
-                <div class="card w-100">
-                    <div class="card-body">
-                        <div class="card-x">
-                            <div class="card-1"> 
-                                <i class="far fa-user"></i>
-                            </div>
-                            <div class="card-2">
-                                <h5>Name</h5>
-                                <h5>Group</h5>
-                                <h5>District</h5>
-                            </div>  
-                        </div>
-                        
-                    
-                    </div>
-                </div>
-            
-            </div>
+                        <?php
+                    }
+                } else {
+                    echo "<h3>No result found</h3>";
+                }
+            }
+            ?>
         </div>
     </div>
 

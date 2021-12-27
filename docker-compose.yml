@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  blood_app:
+    container_name: blood_web_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+
+  mysql_db:
+    container_name: blood_mysql_db
+    image: mysql:8.0.27
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      - ./web_project.sql:/docker-entrypoint-initdb.d/web_project.sql
+    environment:
+      - MYSQL_DATABASE=web_lab_project
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_RANDOM_ROOT_PASSWORD=no
+    ports:
+      - '3306:3306'
