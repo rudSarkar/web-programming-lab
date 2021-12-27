@@ -63,7 +63,7 @@
     </nav>
 
 
-    <!---register form-->>
+    <!---register form-->
 
     <div class="login-form">
         <form>
