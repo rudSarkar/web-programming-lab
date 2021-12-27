@@ -76,19 +76,13 @@
               <input type="email" placeholder="Email" autocomplete="nope">
             </div>
             <div class="input-field">
-                <input type="phone" placeholder="phone" autocomplete="nope">
+            <input placeholder="Phone" autocomplete="nope">
               </div>
+
               <div class="input-field">
-                <select name="" id="">
-                    <option value="A+">A+</option>
-                    <option value="A+">A-</option>
-                    <option value="A+">B+</option>
-                    <option value="A+">B-</option>
-                    <option value="A+">O+</option>
-                    <option value="A+">O-</option>
-                    <option value="A+">AB+</option>
-                    <option value="A+">AB-</option>
-                </select>
+                <input type="phone" placeholder="Blood Group" autocomplete="nope">
+
+                
               </div>  
             <div class="input-field">
               <input type="password" placeholder="Password" autocomplete="new-password">
