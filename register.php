@@ -1,3 +1,25 @@
+<?php
+
+    include 'db.php';
+
+    // register user
+    if (isset($_POST['register'])) {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $blood_group = $_POST['blood_group'];
+
+        $query = "INSERT INTO users (`name`, `email`, `password`, `blood_group`) VALUES ('$name', '$email', '$password', '$blood_group')";
+        $query_run = mysqli_query($connection, $query);
+
+        if ($query_run) {
+            header('Location: login.php');
+        } else {
+            $_SESSION['status'] = "User not registered";
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +37,6 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-red">
         <div class="container">
@@ -66,30 +87,24 @@
     <!---register form-->
 
     <div class="login-form">
-        <form>
+        <form method="POST" action="register.php">
           <h1>Register</h1>
           <div class="content">
             <div class="input-field">
-                <input type="text" placeholder="Full Name" autocomplete="nope">
+                <input type="text" name="name" placeholder="Full Name" autocomplete="nope">
               </div>
             <div class="input-field">
-              <input type="email" placeholder="Email" autocomplete="nope">
+              <input type="email" name="email" placeholder="Email" autocomplete="nope">
             </div>
             <div class="input-field">
-            <input placeholder="Phone" autocomplete="nope">
-              </div>
-
-              <div class="input-field">
-                <input type="phone" placeholder="Blood Group" autocomplete="nope">
-
-                
-              </div>  
+                <input type="text" name="blood_group" placeholder="Blood Group" autocomplete="nope">
+            </div>  
             <div class="input-field">
-              <input type="password" placeholder="Password" autocomplete="new-password">
+              <input type="password" name="password" placeholder="Password" autocomplete="new-password">
             </div>
           </div>
           <div class="action">
-            <button>Sign up</button>
+            <button type="submit" name="register">Sign up</button>
           </div>
         </form>
       </div>

@@ -1,3 +1,32 @@
+<?php
+
+    session_start();
+
+    include 'db.php';
+
+    // if session not exists redirect to login page
+    if(!isset($_SESSION['user_id'])) {
+        header('location: login.php');
+    }
+
+    // update only district and blood group of user
+    if (isset($_POST['update'])) {
+        $district = $_POST['district'];
+        $last_donation_date = $_POST['donation_date'];
+
+        $query = "UPDATE users SET `district_name` = '$district', `last_donation_date` = '$last_donation_date' WHERE `id` = '$_SESSION[user_id]'";
+        $query_run = mysqli_query($connection, $query);
+
+        if ($query_run) {
+            $_SESSION['success'] = "User updated successfully";
+            header('Location: dashboard.php');
+        } else {
+            $_SESSION['status'] = "User not updated";
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +34,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Blood Donor Web Application</title>
+    <title>Dashboard - Blood Donor Web Application</title>
     <link rel="stylesheet" media="all" onload="this.onload=null;this.media='all';" id="ao_optimized_gfonts"
         href="https://fonts.googleapis.com/css?family=Poppins%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100i%2C200i%2C300i%2C400i%2C500i%2C600i%2C700i%2C800i%2C900i%7CPoppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&amp;display=swap">
     <!-- font awesome link -->
@@ -52,10 +81,10 @@
                         <a class="nav-link" href="search.php">Search</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.php">Login</a>
+                        <a class="nav-link" href="dashboard.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="register.php">Register</a>
+                        <a class="nav-link" href="logout.php">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -67,16 +96,31 @@
     
 
     <div class="login-form">
-        <form>
-          <h1>Change Date</h1>
+        <form method="POST" action="dashboard.php">
+          <h1>Last donation time</h1>
           <div class="content">
+            
             <div class="input-field">
-              <input type="date"  autocomplete="nope">
+              <!-- show district of the user -->
+                <?php
+                    $query = "SELECT * FROM `users` WHERE `id` = '$_SESSION[user_id]'";
+                    $query_run = mysqli_query($connection, $query);
+                    
+                    $row = mysqli_fetch_array($query_run);
+
+                    $district_name = $row['district_name'];
+                    $date = $row['last_donation_date'];
+                ?>
+              <input type="text" name="district" value="<?php echo $district_name; ?>" placeholder="enter your disctrict" autocomplete="nope">
+            </div>
+
+            <div class="input-field">
+              <input type="date" value="<?php echo $date; ?>" name="donation_date" autocomplete="nope">
             </div>
 
           </div>
           <div class="action">
-            <button>Change</button>
+            <button type="submit" name="update">Change</button>
           </div>
         </form>
       </div>

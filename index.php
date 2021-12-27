@@ -149,7 +149,7 @@
                     </div>
                     <div class="col-lg-3 col-md-3 mb-4 mb-md-0">
                         <i class=" network-icon  fas fa-map-marker-alt"></i><br>
-                        <h5>1 Districs</h5>
+                        <h5>3 Districs</h5>
                     </div>
                     <div class="col-lg-3 col-md-3 mb-4 mb-md-0">
                         <i class="network-icon fas fa-boxes"></i><br>

@@ -68,19 +68,30 @@
             </div>
             <div class="col-lg-3 col-md-3 mb-4 mb-md-0">
                 <h5>Bload Group</h5>
-                <input type="text">
+                <select name="blood_group" id="" class="form-control">
+                    <option value="a+">A+</option>
+                    <option value="a-">A-</option>
+                    <option value="ab+">AB+</option>
+                    <option value="ab-">AB-</option>
+                    <option value="b+">B+</option>
+                    <option value="b-">B-</option>
+                    <option value="o+">O+</option>
+                    <option value="o-">O-</option>
+                </select>
             </div>
             <div class="col-lg-3 col-md-3 mb-4 mb-md-0">
                 <h5>District</h5>
-                <input type="text">
+                <select name="dist" id="" class="form-control">
+                    <option value="dhaka">Dhaka</option>
+                </select>
             </div>
             <div class="col-lg-3 col-md-3 mb-4 mb-md-0">
                 <h5>Date of Blood Donation</h5>
-                <input type="text">
+                <input type="date" class="form-control">
             </div>
             <div class="col-lg-3 col-md-3 mb-4 mb-md-0">
-                <h5>Donor Type</h5>
-                <input type="text">
+
+                <button class="btn btn-danger mt-4">Search</button>
             </div>
         </div>
     </div>

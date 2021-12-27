@@ -1,3 +1,34 @@
+<?php
+    session_start();
+    
+    include 'db.php';
+
+    // login user
+    if (isset($_POST['login'])) {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+        $query_run = mysqli_query($connection, $query);
+
+        if (mysqli_num_rows($query_run) > 0) {
+            // valid
+            $row = mysqli_fetch_assoc($query_run);
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_name'] = $row['name'];
+            $_SESSION['user_email'] = $row['email'];
+            $_SESSION['user_blood_group'] = $row['blood_group'];
+            $_SESSION['user_last_donation_date'] = $row['last_donation_date'];
+            header('Location: dashboard.php');
+            exit();
+        } else {
+            // invalid
+            $error = 'Incorrect email or password';
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,18 +98,24 @@
     
 
     <div class="login-form">
-        <form>
+        <form method="POST" action="login.php">
           <h1>Login</h1>
+          <!-- show error -->
+            <?php if (isset($error)): ?>
+                <div class="alert alert-danger">
+                <?php echo $error; ?>
+                </div>
+            <?php endif; ?>
           <div class="content">
             <div class="input-field">
-              <input type="email" placeholder="Email" autocomplete="nope">
+              <input type="email" name="email" placeholder="Email" autocomplete="nope">
             </div>
             <div class="input-field">
-              <input type="password" placeholder="Password" autocomplete="new-password">
+              <input type="password" name="password" placeholder="Password" autocomplete="new-password">
             </div>
           </div>
           <div class="action">
-            <button>Log in</button>
+            <button type="submit" name="login">Log in</button>
           </div>
         </form>
       </div>
